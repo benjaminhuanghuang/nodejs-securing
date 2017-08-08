@@ -12,7 +12,7 @@ export const registrationSchema = {
       errorMessage: "Password must be at least 8 characters."
     },
     matches: {
-      option: ["?=.*[a-zA-Z])(?=.*[0-9]+)(?=.*[!*&^%$#@()+]+).*", "g"],
+      option: ["?=.*[a-zA-Z]+)(?=.*[0-9]+)(?=.*[!*&^%$#@()+]+).*", "g"],
       errorMessage: "Password must be alphanumeric."
     },
     errorMessage: "Invalid password"

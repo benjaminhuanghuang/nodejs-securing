@@ -73,3 +73,18 @@ const LoginSchema = new Schema({
     type: Boolean
   }
 });
+
+LoginSchema.static("canLogin", async function (key) {
+  const login = await this.findOne({
+    identityKey: key
+  });
+  if (!login || login.failedAttempts < 5) {
+    return true;
+  }
+  const timeout = (new Date() - new Date(login.timeout).addMinutes(1));
+  if (timeout > 0) {
+    await login.remove();
+    return true;
+  }
+  return false;
+});

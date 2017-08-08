@@ -13,4 +13,7 @@
   req.checkBody(registrationSchema)
   const err = req.validationErrors();
 
+## Brute force safeguards
+  Delay response
+
 ## Tracking failed Login
