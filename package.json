@@ -5,10 +5,20 @@
   "main": "package.js",
   "dependencies": {
     "express":"^4.15.4",
-    "bcrypt": "^1.0.2"
+    "body-parser":"^1.17.2",
+    "mongoose":"^4.11.6",
+    "bcrypt": "^1.0.2",
+    "express-validator":"^3.2.1",
+    "react":"^15.6.1",
+    "path":"^0.12.7",
+    "open":"^0.0.5",
+    "colors":"^2.0.0",
+    "bluebird":"^3.5.0",
+    "cors":"^2.8.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1"
+    "babel-cli": "^6.24.1",
+    "webpack":"^3.4.1"
   },
   "scripts": {
     "start": "babel-node server/starting.js",
