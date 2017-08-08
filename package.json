@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-securing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.js",
+  "dependencies": {
+    "express":"^4.15.4",
+    "bcrypt": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1"
+  },
+  "scripts": {
+    "start": "babel-node server/starting.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminhuanghuang/nodejs-securing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjaminhuanghuang/nodejs-securing/issues"
+  },
+  "homepage": "https://github.com/benjaminhuanghuang/nodejs-securing#readme"
+}
