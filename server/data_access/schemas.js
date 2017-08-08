@@ -88,3 +88,20 @@ LoginSchema.static("canLogin", async function (key) {
   }
   return false;
 });
+
+LoginSchema.static("failedLoginAttempt", async function(key){
+  const query = {identityKey: key};
+  const update = {$inc:{failedAttempts:1}, timeout:new Date()};
+  const option = {setDefaultOnInsert:tur, upset:true};
+  return await this.findOneAndUpdate(query, update, option).exec();
+});
+
+LoginSchema.static("failedLoginAttempt", async function (key) {
+  const login = await this.findOne({ identityKey: key });
+  if (login) {
+    return await login.remove();
+  }
+});
+
+export {LoginSchema}
+

@@ -1,4 +1,18 @@
+const modelMap = new Map([
+    [ "User", UserSchema ],
+    [ "TimelineItem", TimelineSchema ],
+    [ "EventVote", EventVoteSchema ],
+    [ "EventVote", LingSchema ],
+  ]);
 
+export const getModel = async function (modelName) {
+  try {
+    const conn = await connectionProvider(serverSettings.serverUrl, serverSettings.database);
+    return conn.model(modelName, modelMap.get(modelName));
+  } catch (err) {
+    throw err;
+  }
+}
 
 export const getUserModel = async function () {
   try {

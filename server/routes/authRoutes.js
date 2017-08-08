@@ -8,6 +8,9 @@ import {registrationSchema} from '../validation/validationSchemas';
 const uthRouter = Router();
 
 uthRouter.route('/api/user/register').post(cors(), async function (req, res) {
+  const delayResponse = response =>{
+    setTimeout(()=>response(), 1000);
+  }
   try {
     const User = await getUserModel();
     // 
@@ -48,15 +51,16 @@ uthRouter.route('/api/user/register').post(cors(), async function (req, res) {
         console.log(color.yellow(`Error occurred saving User ${err}`));
       }
     });
-    res.status(201).json({
+    return delayResponse(()=>res.status(201).json({
       user:{
         firstName: user.firstName,
         lastName:user.lastName,
         email: user.email
       }
-    })
+    }));
+    
   } catch (err) {
-    return res.status(500).send("There is a problem in logging.");
+    return delayResponse(()=>res.status(500).send("There is a problem in logging."));
   }
 });
 
