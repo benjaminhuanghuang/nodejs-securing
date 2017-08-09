@@ -9,10 +9,12 @@ export default function sessionManagementConfig(app) {
   }
 
   const MongoStore = mongoStorageFactory(session);
+
   app.use(session(
     {
       store: new MongoStore({
-        dbPromise: connectionProvider(serverSettings.serverUrl, serverSettings.database)
+        dbPromise: connectionProvider(serverSettings.serverUrl, serverSettings.database),
+        ttl: (1 * 60 * 60)
       }),
       secret: serverSettings.session.password,
       saveUninitialized: true,
@@ -21,7 +23,9 @@ export default function sessionManagementConfig(app) {
         path: "/",
         httpOnly: false,
         secure: false,
-      }
+        maxAge: 1 * 60 * 60 * 1000
+      },
+      name: "id"
     }
   ));
 }
